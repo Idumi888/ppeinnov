@@ -1,0 +1,26 @@
+#formulaireExercice{
+    visibility: hidden;
+}
+#boutonExercice{
+    visibility: hidden;
+}
+
+#affichage{
+    visibility: hidden;
+}
+#resultat{
+    visibility: hidden;
+}
+
+#inputExercice{
+    visibility:  hidden;
+}
+#boutonExerciceFormulaire{
+    visibility:  hidden;
+}
+#bonnereponse{
+    visibility:  hidden;
+}
+#tableaures{
+    visibility:  hidden;
+}

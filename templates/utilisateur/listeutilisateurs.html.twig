@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title %}Innov'Anglais - Liste des utilisateurs{% endblock %}
+{% block content%}
+   
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8 p-4 m-0 ">
+                    <div class="table-responsive">
+                        <table class="table table-hover" style="border:1px solid black;">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th scope="col">
+                                        Nom
+                                    </th>
+                                    <th scope="col">
+                                        Prenom
+                                    </th>
+                                    <th scope="col">
+                                        Date naissance
+                                        
+                                    </th>
+                                    <th scope="col">
+                                        Date inscription
+                                    </th>
+                                    </th>
+                                   
+                                    
+                                    <th scope="col">
+                                        mail
+                                    </th>
+                                    <th scope="col">
+                                        supprimer
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for utilisateur in utilisateurs %}
+                                    <tr class="{{ cycle(['table-primary'], loop.index0) }}">
+                                    <td>
+                                            <a href="{{path('modifutilisateur',{'id': utilisateur.id})}}">{{utilisateur.nom |capitalize }}</a>
+                                        </td>
+                                        
+                                        <td>
+                                            {{utilisateur.prenom |capitalize }}
+                                        </td>
+                                        <td>
+                                            {{utilisateur.datedenaissance |date("d/m/Y") }}
+                                        </td>
+                                        <td>
+                                            {{utilisateur.dateinscription |date("d/m/Y") }}
+                                        </td>
+                                     
+                                        <td>
+                                            {{utilisateur.email }}
+                                        </td>
+                                        <td>
+										<a href="{{path('listeutilisateurs',{'supp':utilisateur.id})}}" class="text-white">
+											<span class="material-icons" title="Supprimer l'utilisateur'">
+												delete
+											</span>
+										</a>
+									</td>
+
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock%}

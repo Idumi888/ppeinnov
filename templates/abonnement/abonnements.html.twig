@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{parent()}}
+	Liste Abonnements
+{% endblock %}
+{% block body %}
+	{{parent()}}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center text-primary p-4">
+				Liste des Abonnements
+			</h1>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-8 p-4 m-0 text-primary">
+				<div class="table-responsive">
+					<table class="table table-hover " style="border:1px solid black;">
+						<thead class="text-primary">
+							<tr>
+								<th scope="col">
+									Type
+								</th>
+                                <th scope="col">
+									Paiement
+								</th>
+								<th scope="col">
+									Prix
+								</th>
+								<th>Modifier</th>
+                                <th>Supprimer</th>
+							</tr>
+						</thead>
+						<tbody style="border:1px solid black;">
+							{% for abonnement in abonnements %}
+								<tr class="{{ cycle(['table-primary'], loop.index0) }}">
+									<td>
+										{{abonnement.type |capitalize }}
+									</td>
+                                    <td>
+										{{abonnement.paiement |capitalize }}
+									</td>
+									<td>
+										{{abonnement.prix |capitalize }}
+									</td>
+									<td>
+										<a href="{{path('modif_abonnement',{'id': abonnement.id})}}" class="text-white">
+											<span class="material-icons" title="Modifier un	Abonnement">
+												create
+											</span>
+										</a>
+									</td>
+									<td>
+										<a href="{{path('abonnement',{'supp':abonnement.id})}}" class="text-white">
+											<span class="material-icons" title="Supprimer l'abonnement">
+												delete
+											</span>
+										</a>
+									</td>
+									
+
+
+								</tr>
+								
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
